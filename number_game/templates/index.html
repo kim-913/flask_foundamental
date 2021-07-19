@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="text-align: center;margin-top: 200px;padding: 20px;">
+        <h1>Welcome to the Number Game</h1>
+        <h2>A number between 1 to 100 </h2>
+        <h2>Let's make a guess here!</h2>
+        {% if session["count"] <= 5 %} {% if session["actual"]==None%} <form method="post">
+            <input type="number" name="number">
+            <input type="submit" name="sumbit" value="sumbit">
+            </form>
+            {% elif session["true"]> session["actual"]%}
+            <h1>Too low!</h1>
+
+            <form method="post">
+                <input type="number" name="number">
+                <input type="submit" name="sumbit" value="sumbit">
+            </form>
+
+            {% elif session["true"]< session["actual"]%} <h1>Too big!</h1>
+                <form method="post">
+                    <input type="number" name="number">
+                    <input type="submit" name="sumbit" value="sumbit">
+                </form>
+
+                {% elif session["true"]== session["actual"]%}
+                <p>{{session["true"]}} was the right number!</p>
+                <form action="/destory">
+                    <input type="submit" name="sumbit" value="playagain!">
+                </form>
+                {% endif %}
+                <p>It takes you {{session["count"]}} times to guess</p>
+                {% else %}
+                <p>{{session["true"]}} was the right number! YOU WIN!!!!</p>
+                <form action="/destory">
+                    <input type="submit" name="sumbit" value="playagain!">
+                </form>
+                {% endif %}
+    </div>
+</body>
+
+</html>
