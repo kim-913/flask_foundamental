@@ -13,37 +13,45 @@
         <h1>Welcome to the Number Game</h1>
         <h2>A number between 1 to 100 </h2>
         <h2>Let's make a guess here!</h2>
+
         {% if session["count"] <= 5 %} {% if session["actual"]==None%} <form method="post">
             <input type="number" name="number">
             <input type="submit" name="sumbit" value="sumbit">
             </form>
-            {% elif session["true"]> session["actual"]%}
-            <h1>Too low!</h1>
 
-            <form method="post">
-                <input type="number" name="number">
-                <input type="submit" name="sumbit" value="sumbit">
-            </form>
-
-            {% elif session["true"]< session["actual"]%} <h1>Too big!</h1>
+            {%elif session["actual"] > 100 or session["actual"] < 1 %} <h1>Please enter a number between 1 to 100</h1>
                 <form method="post">
                     <input type="number" name="number">
                     <input type="submit" name="sumbit" value="sumbit">
                 </form>
 
-                {% elif session["true"]== session["actual"]%}
-                <p>{{session["true"]}} was the right number!</p>
-                <form action="/destory">
-                    <input type="submit" name="sumbit" value="playagain!">
+                {% elif session["true"]> session["actual"]%}
+                <h1>Too low!</h1>
+
+                <form method="post">
+                    <input type="number" name="number">
+                    <input type="submit" name="sumbit" value="sumbit">
                 </form>
-                {% endif %}
-                <p>It takes you {{session["count"]}} times to guess</p>
-                {% else %}
-                <p>{{session["true"]}} was the right number! YOU WIN!!!!</p>
-                <form action="/destory">
-                    <input type="submit" name="sumbit" value="playagain!">
-                </form>
-                {% endif %}
+
+                {% elif session["true"]< session["actual"]%} <h1>Too big!</h1>
+                    <form method="post">
+                        <input type="number" name="number">
+                        <input type="submit" name="sumbit" value="sumbit">
+                    </form>
+
+                    {% elif session["true"]== session["actual"]%}
+                    <p>{{session["true"]}} was the right number!</p>
+                    <form action="/destory">
+                        <input type="submit" name="sumbit" value="playagain!">
+                    </form>
+                    {% endif %}
+                    <p>It takes you {{session["count"]}} times to guess</p>
+                    {% else %}
+                    <p>{{session["true"]}} was the right number! YOU WIN!!!!</p>
+                    <form action="/destory">
+                        <input type="submit" name="sumbit" value="playagain!">
+                    </form>
+                    {% endif %}
     </div>
 </body>
 
